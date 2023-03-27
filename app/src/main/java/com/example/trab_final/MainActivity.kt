@@ -1,5 +1,6 @@
 package com.example.trab_final
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,6 +22,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.*
@@ -35,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    LoginScreen()
                 }
             }
         }
@@ -55,7 +57,7 @@ fun MyImage() {
 
 @Composable
 fun LoginScreen() {
-
+    val loginContext = LocalContext.current
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -96,7 +98,10 @@ fun LoginScreen() {
         )
         Spacer(modifier = Modifier.height(32.dp))
         Button(
-            onClick = { /* Handle login */ },
+            onClick = { /* Handle login */
+                      val i = Intent(loginContext, Second::class.java)
+                loginContext.startActivity(i)
+                      },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
