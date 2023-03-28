@@ -47,12 +47,6 @@ fun Greeting(name: String) {
     LoginScreen()
 //    Text(text = "Hello $name!")
 }
-
-@Composable
-fun MyImage() {
-    Image(painter = painterResource(id = R.drawable.travel), contentDescription = "Travel")
-}
-
 @Composable
 fun LoginScreen() {
 
@@ -87,7 +81,7 @@ fun LoginScreen() {
             value = password,
             onValueChange = { password = it },
             modifier = Modifier.fillMaxWidth().
-                border(
+            border(
                 BorderStroke(1.dp, Color.Gray),
                 shape = RoundedCornerShape(10.dp)
             ),
@@ -131,6 +125,12 @@ fun LoginScreen() {
         }
     }
 }
+
+@Composable
+fun MyImage() {
+    Image(painter = painterResource(id = R.drawable.travel), contentDescription = "Travel")
+}
+
 
 
 @Preview(showBackground = true)
